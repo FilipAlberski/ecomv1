@@ -2,6 +2,10 @@ import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config({ path: 'server/config/config.env' });
 import productsRoute from './routes/products.js';
+import dbConnect from './config/dbConnect.js';
+
+// connect to database
+dbConnect();
 
 const app = express();
 
