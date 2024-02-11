@@ -1,6 +1,20 @@
 {
   "name": "ecomv1",
   "version": "1.0.0",
+  "description": "E-commerce website",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "author": "Filip Alberski",
+  "type": "module",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "NODE_ENV=DEVELOPMENT nodemon server/index.js",
+    "prod": "NODE_ENV=PRODUCTION nodemon server/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.2",
+    "express": "^4.18.2",
+    "mongoose": "^8.1.1",
+    "nodemon": "^3.0.3"
+  }
 }
