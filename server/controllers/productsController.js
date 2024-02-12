@@ -1,8 +1,10 @@
 import Product from '../models/product.js';
 
+// get all products => /api/v1/products
 const getProducts = async (req, res) => {
+  const product = await Product.find();
   res.status(200).json({
-    message: 'You are in the getProducts route.',
+    product,
   });
 };
 
