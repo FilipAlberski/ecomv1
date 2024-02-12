@@ -9,9 +9,11 @@ dbConnect();
 
 const app = express();
 
+app.use(express.json());
+
 // import routes
 
-app.use('/api/v1/products', productsRoute);
+app.use('/api/v1/', productsRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT} in ${process.env.NODE_ENV} mode.`);
