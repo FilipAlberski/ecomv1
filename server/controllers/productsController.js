@@ -30,4 +30,34 @@ const getProductDetails = async (req, res) => {
   });
 };
 
-export { getProducts, newProduct, getProductDetails };
+//update product details => /api/v1/admin/products/:id
+
+const updateProduct = async (req, res) => {
+  console.log('updateProduct');
+  let product = await Product.findById(req?.params?.id);
+  if (!product) {
+    return res.status(500).json({
+      message: 'Product not found with this ID',
+    });
+  }
+  product = await Product.findByIdAndUpdate(req?.params?.id, req?.body, { new: true });
+  res.status(200).json({
+    product,
+  });
+};
+
+//delete product => /api/v1/admin/products/:id
+
+const deleteProduct = async (req, res) => {
+  const product = await Product.findById(req?.params?.id);
+  if (!product) {
+    return res.status(500).json({
+      message: 'Product not found with this ID',
+    });
+  }
+  await product.deleteOne();
+  res.status(200).json({
+    message: 'Product is deleted',
+  });
+};
+export { getProducts, newProduct, getProductDetails, updateProduct, deleteProduct };
