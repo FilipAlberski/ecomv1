@@ -33,7 +33,6 @@ const getProductDetails = async (req, res) => {
 //update product details => /api/v1/admin/products/:id
 
 const updateProduct = async (req, res) => {
-  console.log('updateProduct');
   let product = await Product.findById(req?.params?.id);
   if (!product) {
     return res.status(500).json({
