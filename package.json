@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "NODE_ENV=DEVELOPMENT nodemon server/index.js",
-    "prod": "NODE_ENV=PRODUCTION nodemon server/index.js"
+    "prod": "NODE_ENV=PRODUCTION nodemon server/index.js",
+    "seeder": "node server/seeder/seeder.js"
   },
   "dependencies": {
     "dotenv": "^16.4.2",
