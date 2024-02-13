@@ -16,4 +16,18 @@ const newProduct = async (req, res) => {
   });
 };
 
-export { getProducts, newProduct };
+//get single product details => /api/v1/products/:id
+
+const getProductDetails = async (req, res) => {
+  const product = await Product.findById(req?.params?.id);
+  if (!product) {
+    return res.status(500).json({
+      message: 'Product not found with this ID',
+    });
+  }
+  res.status(200).json({
+    product,
+  });
+};
+
+export { getProducts, newProduct, getProductDetails };
