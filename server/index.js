@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config({ path: 'server/config/config.env' });
 import productsRoute from './routes/products.js';
 import dbConnect from './config/dbConnect.js';
+import errorMiddleware from './middleware/error.js';
 
 // connect to database
 dbConnect();
@@ -14,6 +15,8 @@ app.use(express.json());
 // import routes
 
 app.use('/api/v1/', productsRoute);
+
+app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT} in ${process.env.NODE_ENV} mode.`);
