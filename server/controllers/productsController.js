@@ -20,13 +20,17 @@ const newProduct = async (req, res) => {
 //get single product details => /api/v1/products/:id
 
 const getProductDetails = async (req, res, next) => {
-  const product = await Product.findById(req?.params?.id);
-  if (!product) {
-    return next(new ErrorHandler('Product not found with this ID', 404));
+  try {
+    const product = await Product.findById(req?.params?.id);
+    if (!product) {
+      return next(new ErrorHandler('Product not found with this ID', 404));
+    }
+    res.status(200).json({
+      product,
+    });
+  } catch (err) {
+    next(err);
   }
-  res.status(200).json({
-    product,
-  });
 };
 
 //update product details => /api/v1/admin/products/:id
